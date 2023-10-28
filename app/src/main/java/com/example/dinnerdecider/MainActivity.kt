@@ -1,8 +1,9 @@
 package com.example.dinnerdecider
 
-import com.example.dinnerdecider.databinding.ActivityMainBinding
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import com.example.dinnerdecider.databinding.ActivityMainBinding
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -12,18 +13,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
-        decideRandomFood()
-        binding.btnAddFood.setOnClickListener {
-            if(binding.etNewFood.text.isNotBlank())
-                foodChoices.add(binding.etNewFood.text.toString())
-        }
-        binding.btnDecide.setOnClickListener {
-            decideRandomFood()
+        setContentView(binding.root)
+    }
+
+    fun addFood(view:View) {
+        val newFood = binding.etNewFood.text
+        if(!newFood.isNullOrBlank()) {
+            if(!foodChoices.contains(newFood.toString()))
+                foodChoices.add(newFood.toString())
+            binding.etNewFood.text = null
         }
     }
 
-    fun decideRandomFood() {
+    fun decideRandomFood(view: View) {
         val randomIndex = Random.nextInt(foodChoices.size)
         binding.tvDecidedFood.text = foodChoices[randomIndex]
     }

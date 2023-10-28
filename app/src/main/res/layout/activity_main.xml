@@ -56,7 +56,8 @@
             android:id="@+id/btnAddFood"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="ADD FOOD" />
+            android:text="ADD FOOD"
+            android:onClick="addFood"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -65,6 +66,7 @@
             android:id="@+id/btnDecide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DECIDE!" />
+            android:text="DECIDE!"
+            android:onClick="decideRandomFood"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
